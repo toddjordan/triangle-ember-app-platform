@@ -6,6 +6,7 @@
 #+REVEAL_THEME: league
 #+REVEAL_EXTRA_CSS: ./app-platform.css
 #+OPTIONS: num:nil toc:nil reveal_history:t
+#+OPTIONS: reveal_title_slide:"<h1>%t</h1><h3>%a</h3><h3>%e</h3>"
 
 * So What's an Application Platform?
 
@@ -128,9 +129,11 @@ A Unit of web application code
   - Modules "know" about each other
   - Compatible at the same version
 
+
 *** Outlet
 
   A spot in the app where a module should go
+
   #+BEGIN_SRC html
     <tecton-outlet
         name="LandingPage.topBanner"
@@ -143,7 +146,114 @@ A Unit of web application code
   #+END_SRC
   Code declaring the Outlet had no knowledge of module
 
+*** Config
+
+#+BEGIN_SRC javascript
+    {
+        legacy: {
+            LandingPage: {
+                featureName: 'LandingPage',
+                moduleName: 'main',
+                configuredOutlets: {
+                    topBanner: [
+                        {
+                            featureName: 'GoalBasedPlanning',
+                            moduleName: 'gbp-dashboard',
+                        },
+                    ],
+                },
+            },
+        },
+        features: {
+            LandingPage: {
+                core: true,
+                routeUrl: '/landingPage',
+                routeName: 'landingPage',
+                modules: {
+                    main: {
+                        primary: true,
+                        legacy: true,
+                        overpanel: false,
+                        meta: {
+                            moduleName: 'main',
+                            featureName: 'LandingPage',
+                            type: {
+                                shape: 'Content',
+                                context: 'None',
+                                overpanelReady: false,
+                            },
+                            outlets: {
+                                topBanner: {
+                                    resolveType: 'feature',
+                                    shape: 'Banner',
+                                    context: 'None',
+                                    overpanelReady: false,
+                                    required: false,
+                                },
+                            },
+                        },
+                    },
+                },
+            },
+            GoalBasedPlanning: {
+                core: false,
+                modules: {
+                    'gbp-dashboard': {
+                        overpanel: false,
+                        url:
+                            'cdn/base/tecton/GoalBasedPlanning/develop/gbp-dashboard/index.html',
+                        meta: {
+                            featureName: 'GoalBasedPlanning',
+                            moduleName: 'dashboard',
+                            type: {
+                                shape: 'Banner',
+                                context: 'None',
+                                overpanelReady: false,
+                            },
+                        },
+                    },
+                    main: {
+                        overpanel: true,
+                        url: 'cdn/base/tecton/GoalBasedPlanning/develop/gbp-create/index.html',
+                        meta: {
+                            featureName: 'GoalBasedPlanning',
+                            moduleName: 'main',
+                            type: {
+                                shape: 'Content',
+                                Context: 'None',
+                                overpanelReady: true,
+                            },
+                            params: {
+                                categoryId: {
+                                    type: 'number',
+                                    replace: true,
+                                },
+                                accountId: {
+                                    type: 'string',
+                                    replace: true,
+                                },
+                                route: {
+                                    type: 'string',
+                                    replace: true,
+                                },
+                            },
+                        },
+                    },
+                },
+                configuredOverpanels: {
+                    main: {
+                        featureName: 'GoalBasedPlanning',
+                        moduleName: 'main'
+                    }
+                }
+            },
+        },
+    };
+#+END_SRC
+
 *** Web Components!
+
+[[./images/web-component-adv-select.png]]
 
 ** Patterns
 
@@ -251,3 +361,4 @@ Deployment happens at the Feature Level
 - Twitter: @tddjordan
 - Ember Slack: @todd.jordan
 - Blog: http://presentationtier.com
+- Slide Source: https://github.com/toddjordan/triangle-ember-app-platform
