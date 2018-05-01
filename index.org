@@ -143,9 +143,7 @@ A Unit of web application code
   #+END_SRC
   Code declaring the Outlet had no knowledge of module
 
-*** Shapes
-
-*** Web Component
+*** Web Components!
 
 ** Patterns
 
