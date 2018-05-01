@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<title>Apps in your App</title>
+<meta name="author" content="(Todd Jordan)"/>
+<style type="text/css">
+.underline { text-decoration: underline; }
+</style>
+<link rel="stylesheet" href="./reveal.js/css/reveal.css"/>
+
+<link rel="stylesheet" href="./reveal.js/css/theme/league.css" id="theme"/>
+
+<link rel="stylesheet" href="./app-platform.css"/>
+
+<!-- If the query includes 'print-pdf', include the PDF print sheet -->
+<script>
+    if( window.location.search.match( /print-pdf/gi ) ) {
+        var link = document.createElement( 'link' );
+        link.rel = 'stylesheet';
+        link.type = 'text/css';
+        link.href = './reveal.js/css/print/pdf.css';
+        document.getElementsByTagName( 'head' )[0].appendChild( link );
+    }
+</script>
+</head>
+<body>
+<div class="reveal">
+<div class="slides">
+<section id="sec-title-slide"><h1>Apps in your App</h1><h4>Todd Jordan</h4><h4><a href="mailto:@tddjordan">@tddjordan</a></h4>
+</section>
+
+<section>
+<section id="slide-orgda4f209">
+<h2 id="orgda4f209">So What's an Application Platform?</h2>
+<div class="outline-text-2" id="text-orgda4f209">
+</div>
+</section>
+</section>
+<section>
+<section id="slide-orgd32bf98" data-background-video="./videos/osx-app-window.mov" class="dark-title-background">
+<h3 id="orgd32bf98">The Operating System</h3>
+
+</section>
+</section>
+<section>
+<section id="slide-org78aece5" data-background="./images/chrome-app-platform.png" class="dark-title-background">
+<h3 id="org78aece5">Chrome</h3>
+
+</section>
+</section>
+<section>
+<section id="slide-org063f9b2" data-background="./images/salesforce-google-apps-setup.png" class="dark-title-background">
+<h3 id="org063f9b2">SalesForce</h3>
+</section>
+<section id="slide-orgaf24be7" data-background="./images/salesforce-app-launcher.png" class="dark-title-background">
+<h4 id="orgaf24be7">App Launcher</h4>
+
+</section>
+<section id="slide-org9193288" data-background="./images/salesforce-appexchange-screenshot.jpg" class="dark-title-background">
+<h4 id="org9193288">App Marketplace</h4>
+
+</section>
+</section>
+<section>
+<section id="slide-org34e0e30" data-background="./images/facebook_music_apps.png" class="dark-title-background">
+<h3 id="org34e0e30">Facebook</h3>
+
+</section>
+</section>
+<section>
+<section id="slide-orgc2d7079" data-background="./images/purecloud-chat.png" class="dark-title-background">
+<h3 id="orgc2d7079">Genesys PureCloud</h3>
+</section>
+<section id="slide-org99755dc" data-background="./images/purecloud-ngagement.png" class="dark-title-background">
+<h4 id="org99755dc">Genesys PureCloud Apps</h4>
+
+
+</section>
+</section>
+<section>
+<section id="slide-org95f1212">
+<h2 id="org95f1212">Why Application Platforms?</h2>
+<div class="outline-text-2" id="text-org95f1212">
+</div>
+</section>
+</section>
+<section>
+<section id="slide-orgb4878b6" data-background="./images/dependency-hell.jpg" class="dark-title-background">
+<h3 id="orgb4878b6">Isolation</h3>
+<ul>
+<li class="fragment roll-in">Limit Access</li>
+<li class="fragment roll-in">Limit Dependencies</li>
+<li class="fragment roll-in">Limit Damage</li>
+
+</ul>
+
+<aside class="notes">
+<ul>
+<li>Strictly Defined Contracts create certainty.</li>
+
+</ul>
+
+</aside>
+
+</section>
+</section>
+<section>
+<section id="slide-org444c223" data-background="./images/parallel-releases.jpg" class="dark-title-background">
+<h3 id="org444c223">Independence</h3>
+<ul>
+<li class="fragment roll-in">Independent Release Schedules</li>
+<li class="fragment roll-in">New Features Without Full Upgrade</li>
+<li class="fragment roll-in">BYOWL (Bring your own web library)</li>
+
+</ul>
+
+<aside class="notes">
+<ul>
+<li>An iframe approach ensures that a module can only interact with its parent/other modules through a tightly controlled API.</li>
+
+</ul>
+
+</aside>
+
+</section>
+</section>
+<section>
+<section id="slide-org273a65e" data-background="./images/salesforce-partners.png" class="dark-title-background">
+<h3 id="org273a65e">Get Others Creating Features</h3>
+<ul>
+<li class="fragment roll-in">Teams</li>
+<li class="fragment roll-in">Services</li>
+<li class="fragment roll-in">Customers</li>
+<li class="fragment roll-in">Vendors</li>
+
+</ul>
+
+</section>
+</section>
+<section>
+<section id="slide-org6cea1d6" data-background="./images/facebook_music_apps.png" class="dark-title-background">
+<h3 id="org6cea1d6">Become a Marketplace</h3>
+<ul>
+<li class="fragment roll-in">An Integration Point</li>
+<li class="fragment roll-in">A Strategic Advantage</li>
+
+</ul>
+
+</section>
+</section>
+<section>
+<section id="slide-org57985f3">
+<h2 id="org57985f3">How Would you Make this Happen?</h2>
+<div class="outline-text-2" id="text-org57985f3">
+</div>
+</section>
+</section>
+<section>
+<section id="slide-orge59bd24">
+<h3 id="orge59bd24">Building Blocks</h3>
+<div class="outline-text-3" id="text-orge59bd24">
+</div>
+</section>
+<section id="slide-orgcf991ca">
+<h4 id="orgcf991ca">Module</h4>
+<p>
+A Unit of web application code 
+</p>
+
+
+<div class="figure">
+<p><img src="./images/app-platform-basic.png" alt="app-platform-basic.png" />
+</p>
+</div>
+
+</section>
+<section id="slide-orgc944cbf">
+<h4 id="orgc944cbf">Feature</h4>
+<img src="./images/app-platform-features.png" height="400px">
+<ul>
+<li class="fragment roll-in">A related collection of modules.</li>
+<li class="fragment roll-in">Modules "know" about each other</li>
+<li class="fragment roll-in">Compatible at the same version</li>
+
+</ul>
+
+</section>
+<section id="slide-orgf9e0646">
+<h4 id="orgf9e0646">Outlet</h4>
+<p>
+A spot in the app where a module should go
+</p>
+<div class="org-src-container">
+
+<pre  class="src src-html">&lt;<span style="color: #93E0E3;">tecton-outlet</span>
+    <span style="color: #DFAF8F;">name</span>=<span style="color: #CC9393;">"LandingPage.topBanner"</span>
+    <span style="color: #DFAF8F;">shape</span>=<span style="color: #CC9393;">"Banner"</span>
+    <span style="color: #DFAF8F;">context</span>=<span style="color: #CC9393;">"None"</span>
+    <span style="color: #DFAF8F;">maxHeight</span>=<span style="color: #CC9393;">"200"</span>
+    <span style="color: #DFAF8F;">minHeight</span>=<span style="color: #CC9393;">"50"</span>
+    <span style="color: #DFAF8F;">minWidth</span>=<span style="color: #CC9393;">"100"</span>
+    &gt;&lt;/<span style="color: #93E0E3;">tecton-outlet</span>&gt;
+</pre>
+</div>
+<p>
+Code declaring the Outlet had no knowledge of module
+</p>
+
+</section>
+<section id="slide-org287a6de">
+<h4 id="org287a6de">Shapes</h4>
+
+</section>
+<section id="slide-orgdd32652">
+<h4 id="orgdd32652">Web Component</h4>
+
+</section>
+</section>
+<section>
+<section id="slide-org3152ed7">
+<h3 id="org3152ed7">Patterns</h3>
+<div class="outline-text-3" id="text-org3152ed7">
+</div>
+</section>
+<section id="slide-orgebb8e89">
+<h4 id="orgebb8e89">Page</h4>
+
+<div class="figure">
+<p><img src="./images/app-platform-basic.png" alt="app-platform-basic.png" />
+</p>
+</div>
+
+</section>
+<section id="slide-org4228891">
+<h4 id="org4228891">Overpanel</h4>
+
+<div class="figure">
+<p><img src="./images/app-platform-overpanel.png" alt="app-platform-overpanel.png" />
+</p>
+</div>
+
+</section>
+<section id="slide-org584fcd8">
+<h4 id="org584fcd8">Nested</h4>
+
+<div class="figure">
+<p><img src="./images/app-platform-dashboard.png" alt="app-platform-dashboard.png" />
+</p>
+</div>
+
+</section>
+<section id="slide-org210f9d1">
+<h4 id="org210f9d1">Tabs</h4>
+
+<div class="figure">
+<p><img src="./images/app-platform-tabs.png" alt="app-platform-tabs.png" />
+</p>
+</div>
+
+</section>
+<section id="slide-org9588cbe">
+<h4 id="org9588cbe">Data?</h4>
+
+<div class="figure">
+<p><img src="./images/app-platform-data-table.png" alt="app-platform-data-table.png" />
+</p>
+</div>
+
+<aside class="notes">
+<p>
+This is the case where you have a table where you want to throw in various types of things and have actions perform different tasks.
+</p>
+
+</aside>
+
+</section>
+</section>
+<section>
+<section id="slide-org9f6f85b">
+<h3 id="org9f6f85b">Architecture</h3>
+<img src="./images/app-platform-architecture.png" height="600px">
+
+</section>
+<section id="slide-org90c4803">
+<h4 id="org90c4803">Deployment</h4>
+<ul>
+<li>CDN</li>
+<li>nginx</li>
+<li>Config Service</li>
+
+</ul>
+
+<aside class="notes">
+<p>
+Deployment happens at the Feature Level
+</p>
+<ul>
+<li>Built modules are deployed to the CDN</li>
+<li>feature-level configuration is updated</li>
+<li>Customer confinguration associating modules to outlets</li>
+
+</ul>
+
+</aside>
+
+</section>
+<section id="slide-orgd212917">
+<h4 id="orgd212917">Tech Stack: App Platform</h4>
+
+<div class="figure">
+<p><img src="./images/tomster-release.png" alt="tomster-release.png" />
+</p>
+</div>
+
+</section>
+<section id="slide-org54f4356">
+<h4 id="org54f4356">Tech Stack: API</h4>
+
+<div class="figure">
+<p><img src="./images/typescript.jpg" alt="typescript.jpg" />
+</p>
+</div>
+
+</section>
+<section id="slide-org14d2108">
+<h4 id="org14d2108">Tech Stack: Web Components</h4>
+
+<div class="figure">
+<p><img src="./images/cyclejs.jpeg" alt="cyclejs.jpeg" />
+</p>
+</div>
+
+</section>
+<section id="slide-org18ed926">
+<h4 id="org18ed926">Tech Stack: Modules</h4>
+
+<div class="figure">
+<p><img src="./images/vue.png" alt="vue.png" />
+</p>
+</div>
+<p class="fragment (roll-in)">
+&#x2026; or whatever 😎
+</p>
+<aside class="notes">
+<ul>
+<li>Parent App Platform: Ember</li>
+<li>Platform/SDK JS APIs: Typescript (+rxjs)</li>
+<li>Web Components (Cyclejs, ts)</li>
+<li>Apps (Anything!, first implementor using Vue)</li>
+
+</ul>
+
+</aside>
+
+</section>
+</section>
+<section>
+<section id="slide-orgfd207ce">
+<h3 id="orgfd207ce">Special Concerns</h3>
+<div class="outline-text-3" id="text-orgfd207ce">
+</div>
+</section>
+<section id="slide-org75dcee3">
+<h4 id="org75dcee3">Routing</h4>
+<ul>
+<li>Routing is done via query params.</li>
+<li>Leverages Ember's Query Param Functionality
+<ul>
+<li>Replace Params: Updates History without affecting back button</li>
+<li>Push Params: Adds to History</li>
+
+</ul></li>
+
+</ul>
+
+</section>
+<section id="slide-org3fcad4d">
+<h4 id="org3fcad4d">Themeing/i18n</h4>
+<ul>
+<li>Theme CSS files loaded based on Theme provided by parent app</li>
+<li>Language files loaded based on language key provided by parent app</li>
+<li>Both values allow modules to react to runtime changes</li>
+
+</ul>
+
+
+</section>
+</section>
+<section>
+<section id="slide-org288c8fc">
+<h2 id="org288c8fc">Ember</h2>
+<div class="outline-text-2" id="text-org288c8fc">
+</div>
+</section>
+</section>
+<section>
+<section id="slide-org0253194">
+<h3 id="org0253194">Ember is a Natural Application Shell</h3>
+<ul>
+<li>Out of the Box Build Pipeline, Testing, Data Layer</li>
+<li>Modules more suited for View Libraries</li>
+
+</ul>
+
+</section>
+</section>
+<section>
+<section id="slide-org7bdceb2">
+<h3 id="org7bdceb2">Engines Provide Some Advantages</h3>
+<ul>
+<li>Integration with Routing</li>
+<li>Potential Performance Advantage</li>
+<li>Single Tech Stack</li>
+
+</ul>
+
+</section>
+</section>
+<section>
+<section id="slide-orgb108c08">
+<h3 id="orgb108c08">But Fall Short in Some Key Ways</h3>
+<ul>
+<li>Release Independence</li>
+<li>Technology Independence</li>
+<li>Library Isolation</li>
+
+</ul>
+
+</section>
+</section>
+<section>
+<section id="slide-orgb66c64d">
+<h2 id="orgb66c64d">What's Next?</h2>
+<div class="outline-text-2" id="text-orgb66c64d">
+</div>
+</section>
+</section>
+<section>
+<section id="slide-orgf55600e">
+<h3 id="orgf55600e">Patterns and Approach</h3>
+
+</section>
+</section>
+<section>
+<section id="slide-org44d6b50">
+<h3 id="org44d6b50">Open Source</h3>
+
+</section>
+</section>
+<section>
+<section id="slide-org4bb70bf">
+<h2 id="org4bb70bf">Thanks!</h2>
+<ul>
+<li>Twitter: @tddjordan</li>
+<li>Ember Slack: @todd.jordan</li>
+<li>Blog: <a href="http://presentationtier.com">http://presentationtier.com</a></li>
+
+</ul>
+</section>
+</section>
+</div>
+</div>
+<script src="./reveal.js/lib/js/head.min.js"></script>
+<script src="./reveal.js/js/reveal.js"></script>
+
+<script>
+// Full list of configuration options available here:
+// https://github.com/hakimel/reveal.js#configuration
+Reveal.initialize({
+
+controls: true,
+progress: true,
+history: true,
+center: true,
+slideNumber: 'c',
+rollingLinks: false,
+keyboard: true,
+overview: true,
+
+theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+transition: Reveal.getQueryHash().transition || 'default', // default/cube/page/concave/zoom/linear/fade/none
+transitionSpeed: 'default',
+multiplex: {
+    secret: '', // null if client
+    id: '', // id, obtained from socket.io server
+    url: '' // Location of socket.io server
+},
+
+// Optional libraries used to extend on reveal.js
+dependencies: [
+ { src: './reveal.js/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+ { src: './reveal.js/plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+ { src: './reveal.js/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+ { src: './reveal.js/plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+ { src: './reveal.js/plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }]
+});
+</script>
+</body>
+</html>

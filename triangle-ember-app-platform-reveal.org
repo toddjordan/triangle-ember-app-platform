@@ -1,0 +1,254 @@
+#+TITLE: Apps in your App
+#+AUTHOR: Todd Jordan
+#+EMAIL: @tddjordan
+#+REVEAL_HLEVEL: 2
+#+REVEAL_THEME: league
+#+REVEAL_EXTRA_CSS: ./app-platform.css
+#+OPTIONS: num:nil toc:nil reveal_history:t
+
+* So What's an Application Platform?
+
+** The Operating System
+   :PROPERTIES:
+   :REVEAL_EXTRA_ATTR: data-background-video="./videos/osx-app-window.mov" class="dark-title-background"
+   :END:
+
+** Chrome
+   :PROPERTIES:
+   :reveal_background: ./images/chrome-app-platform.png
+   :REVEAL_EXTRA_ATTR: class="dark-title-background"
+   :END:
+
+** SalesForce
+   :PROPERTIES:
+   :reveal_background: ./images/salesforce-google-apps-setup.png
+   :REVEAL_EXTRA_ATTR: class="dark-title-background"
+   :END:
+
+*** App Launcher
+    :PROPERTIES:
+    :reveal_background: ./images/salesforce-app-launcher.png
+    :REVEAL_EXTRA_ATTR: class="dark-title-background"
+    :END:
+
+*** App Marketplace
+    :PROPERTIES:
+    :reveal_background: ./images/salesforce-appexchange-screenshot.jpg
+    :REVEAL_EXTRA_ATTR: class="dark-title-background"
+    :END:
+
+** Facebook
+   :PROPERTIES:
+   :reveal_background: ./images/facebook_music_apps.png
+   :REVEAL_EXTRA_ATTR: class="dark-title-background"
+   :END:
+
+** Genesys PureCloud
+   :PROPERTIES:
+   :reveal_background: ./images/purecloud-chat.png
+   :REVEAL_EXTRA_ATTR: class="dark-title-background"
+   :END:
+
+*** Genesys PureCloud Apps
+   :PROPERTIES:
+   :reveal_background: ./images/purecloud-ngagement.png
+   :REVEAL_EXTRA_ATTR: class="dark-title-background"
+   :END:
+
+
+* Why Application Platforms?
+
+** Isolation
+   :PROPERTIES:
+   :reveal_background: ./images/dependency-hell.jpg
+   :REVEAL_EXTRA_ATTR: class="dark-title-background"
+   :END:
+
+#+ATTR_REVEAL: :frag (roll-in)
+  - Limit Access
+  - Limit Dependencies
+  - Limit Damage
+
+#+BEGIN_NOTES
+  - Strictly Defined Contracts create certainty.
+#+END_NOTES
+
+** Independence
+   :PROPERTIES:
+   :reveal_background: ./images/parallel-releases.jpg
+   :REVEAL_EXTRA_ATTR: class="dark-title-background"
+   :END:
+
+#+ATTR_REVEAL: :frag (roll-in)
+  - Independent Release Schedules
+  - New Features Without Full Upgrade
+  - BYOWL (Bring your own web library)
+
+#+BEGIN_NOTES
+  - An iframe approach ensures that a module can only interact with its parent/other modules through a tightly controlled API.
+#+END_NOTES
+
+** Get Others Creating Features
+   :PROPERTIES:
+   :reveal_background: ./images/salesforce-partners.png
+   :REVEAL_EXTRA_ATTR: class="dark-title-background"
+   :END:
+
+#+ATTR_REVEAL: :frag (roll-in)
+  - Teams
+  - Services
+  - Customers
+  - Vendors
+
+** Become a Marketplace
+   :PROPERTIES:
+   :reveal_background: ./images/facebook_music_apps.png
+   :REVEAL_EXTRA_ATTR: class="dark-title-background"
+   :END:
+
+#+ATTR_REVEAL: :frag (roll-in)
+  - An Integration Point
+  - A Strategic Advantage
+
+* How Would you Make this Happen?
+
+** Building Blocks
+
+*** Module
+A Unit of web application code 
+
+[[./images/app-platform-basic.png]]
+
+*** Feature
+
+#+REVEAL_HTML: <img src="./images/app-platform-features.png" height="400px">
+#+ATTR_REVEAL: :frag (roll-in)
+  - A related collection of modules.
+  - Modules "know" about each other
+  - Compatible at the same version
+
+*** Outlet
+
+  A spot in the app where a module should go
+  #+BEGIN_SRC html
+    <tecton-outlet
+        name="LandingPage.topBanner"
+        shape="Banner"
+        context="None"
+        maxHeight="200"
+        minHeight="50"
+        minWidth="100"
+        ></tecton-outlet>
+  #+END_SRC
+  Code declaring the Outlet had no knowledge of module
+
+*** Shapes
+
+*** Web Component
+
+** Patterns
+
+*** Page
+
+[[./images/app-platform-basic.png]]
+
+*** Overpanel
+
+[[./images/app-platform-overpanel.png]]
+
+*** Nested
+
+[[./images/app-platform-dashboard.png]]
+
+*** Tabs
+
+[[./images/app-platform-tabs.png]]
+
+*** Data?
+
+[[./images/app-platform-data-table.png]]
+
+#+BEGIN_NOTES
+This is the case where you have a table where you want to throw in various types of things and have actions perform different tasks.
+#+END_NOTES
+
+** Architecture
+
+#+REVEAL_HTML: <img src="./images/app-platform-architecture.png" height="600px">
+
+*** Deployment
+  - CDN
+  - nginx
+  - Config Service
+
+#+BEGIN_NOTES
+Deployment happens at the Feature Level
+- Built modules are deployed to the CDN
+- feature-level configuration is updated
+- Customer confinguration associating modules to outlets
+#+END_NOTES
+
+*** Tech Stack: App Platform
+[[./images/tomster-release.png]]
+
+*** Tech Stack: API
+[[./images/typescript.jpg]]
+
+*** Tech Stack: Web Components
+[[./images/cyclejs.jpeg]]
+
+*** Tech Stack: Modules
+[[./images/vue.png]]
+#+ATTR_REVEAL: :frag (roll-in)
+... or whatever 😎
+#+BEGIN_NOTES
+- Parent App Platform: Ember
+- Platform/SDK JS APIs: Typescript (+rxjs)
+- Web Components (Cyclejs, ts)
+- Apps (Anything!, first implementor using Vue)
+#+END_NOTES
+
+** Special Concerns
+
+*** Routing
+
+- Routing is done via query params.
+- Leverages Ember's Query Param Functionality
+  - Replace Params: Updates History without affecting back button
+  - Push Params: Adds to History
+
+*** Themeing/i18n
+
+- Theme CSS files loaded based on Theme provided by parent app
+- Language files loaded based on language key provided by parent app
+- Both values allow modules to react to runtime changes
+
+
+* About Ember
+
+** Ember is a Natural Application Shell
+  - Out of the Box Build Pipeline, Testing, Data Layer
+  - Modules more suited for View Libraries
+
+** Engines Provide Some Advantages
+  - Integration with Routing
+  - Potential Performance Advantage
+  - Contract via Services
+  - Single Tech Stack
+
+** But Fall Short in Some Key Ways
+
+  - Release Independence
+  - Technology Independence
+  - Library Isolation
+
+* What's Next?
+
+** Patterns and Approach
+
+** Open Source?
+
+* Thanks!
+- Twitter: @tddjordan
+- Ember Slack: @todd.jordan
+- Blog: http://presentationtier.com
