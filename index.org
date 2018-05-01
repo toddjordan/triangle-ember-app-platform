@@ -1,6 +1,7 @@
 #+TITLE: Apps in your App
 #+AUTHOR: Todd Jordan
 #+EMAIL: @tddjordan
+#+REVEAL_ROOT: ./reveal/
 #+REVEAL_HLEVEL: 2
 #+REVEAL_THEME: league
 #+REVEAL_EXTRA_CSS: ./app-platform.css
